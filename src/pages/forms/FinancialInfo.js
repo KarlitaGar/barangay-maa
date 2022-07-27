@@ -11,12 +11,7 @@ import ListItemText from "@mui/material";
 
 
 const defaultValues = {
-    mname: "",
-    lname: "",
-    ename: "",
-    fname: "",
-    address: "",
-    gender: "",
+    hhIncome: "",
     religion: "",
     dialect: "",
     ethnicity: "",
@@ -91,7 +86,7 @@ function getStyles(name, constraintName, theme) {
   
 
 
-const HouseholdForm = () => {
+const FinancialInfo = () => {
 
     const [formValues, setFormValues] = useState(defaultValues);
     const handleInputChange = (e) => {
@@ -128,7 +123,7 @@ const HouseholdForm = () => {
     <Grid container direction='column' alignItems='center' sx={{ width: '1000px', height: 1200, border: '1px solid red', borderRadius: 3 }}>
         <Grid item sx={{ paddingTop: 5}}>
             <Typography variant="h4" color="black" align="center" sx={{ fontFamily: 'Helvetica', fontWeight: 200 }}>
-				For Households
+				For Households Financial Information Table
 			</Typography>
         </Grid>
         <Grid item>
@@ -143,124 +138,13 @@ const HouseholdForm = () => {
                     <div style={{ width: "30px" }} />
                         <TextField
                             id="name-input"
-                            name="familyname"
-                            label="Household Family Name"
-                            type="text"
+                            name="hhIncome"
+                            label="Household Head Income"
+                            type="number"
                             sx={{ width: 830 }}
                             value={formValues.name}
                             onChange={handleInputChange}
                         />
-                </Grid>
-            </Grid>
-
-           <Grid item>
-                <Grid container direction='row' sx={{ paddingTop: 2 }}>
-                    <div style={{ width: "30px" }} />
-                        <TextField
-                            id="name-input"
-                            name="address"
-                            label="Address"
-                            type="text"
-                            sx={{ width: 830 }}
-                            value={formValues.name}
-                            onChange={handleInputChange}
-                        />
-                </Grid>
-            </Grid>
-
-            <Grid item>
-                <Grid container direction='row' sx={{ paddingTop: 2 }}>
-                <div style={{ width: "30px" }} />
-                    <TextField
-                        disabled
-                        id="outlined-disabled"
-                        label="Barangay"
-                        defaultValue="Maa"
-                        sx={{ width: 400 }}
-                        value={formValues.name}
-                    />
-                    <Grid sx={{ width: 30, height: 20 }}/>
-                    <TextField
-                        disabled
-                        id="outlined-disabled"
-                        label="City/Municipality"
-                        defaultValue="Davao City"
-                        sx={{ width: 400 }}
-                        value={formValues.name}
-                    />
-                </Grid>
-            </Grid>
-
-            <Grid item>
-                <Grid container direction='row' sx={{ paddingTop: 2 }}>
-                <div style={{ width: "30px" }} />
-                    <TextField
-                        disabled
-                        id="outlined-disabled"
-                        label="Province"
-                        defaultValue="Davao del Sur"
-                        sx={{ width: 400 }}
-                        value={formValues.name}
-                    />
-                    <Grid sx={{ width: 30, height: 20 }}/>
-                    <TextField
-                        disabled
-                        id="outlined-disabled"
-                        label="Zipcode"
-                        defaultValue="8000"
-                        sx={{ width: 400 }}
-                        value={formValues.name}
-                    />
-                </Grid>
-            </Grid>
-
-            <Grid item>
-                <Grid container direction='row' sx={{ paddingTop: 2 }}>
-                <div style={{ width: "30px" }} />
-                    <TextField
-                        id="name-input"
-                        name="yearsOfResidence"
-                        label="Years of Residence"
-                        type="number"
-                        sx={{ width: 400 }}
-                        value={formValues.name}
-                        onChange={handleInputChange}
-                    />
-                    <Grid sx={{ width: 30, height: 20 }}/>
-                    <TextField
-                        id="name-input"
-                        name="numberOfMembers"
-                        label="Number of Members"
-                        type="number"
-                        sx={{ width: 400 }}
-                        value={formValues.name}
-                        onChange={handleInputChange}
-                    />
-                </Grid>
-            </Grid>
-
-            <Grid item>
-                <Grid container direction='row' sx={{ paddingTop: 2 }}>
-                <div style={{ width: "30px" }} />
-                    <TextField
-                        id="name-input"
-                        name="email"
-                        label="Email Address"
-                        type="email"
-                        sx={{ width: 400 }}
-                        value={formValues.name}
-                        onChange={handleInputChange}
-                    />
-                    <Grid sx={{ width: 30, height: 20 }}/>
-                    <TextField
-                        id="name-input"
-                        name="contact"
-                        label="Contact Number"
-                        inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }}
-                        sx={{ width: 400 }}
-                        value={formValues.name}
-                        onChange={handleInputChange}
-                    />
                 </Grid>
             </Grid>
 
@@ -389,7 +273,7 @@ const HouseholdForm = () => {
                 </Grid>            
             </Grid>
 
-            <Grid item>
+            {/* <Grid item>
                 <Grid container direction='row' sx={{ paddingTop: 2 }}>
                     <div style={{ width: "23px" }} />
                     <FormControl sx={{ m: 1, width: 400 }}>
@@ -443,7 +327,7 @@ const HouseholdForm = () => {
                 </Grid>            
             </Grid>
 
-            {/* <Grid item>
+            <Grid item>
                 <Grid container direction='row' sx={{ paddingTop: 2 }}>
                     <div style={{ width: "23px" }} />
                     <FormControl sx={{ m: 1, width: 400 }}>
@@ -488,6 +372,35 @@ const HouseholdForm = () => {
                 </Grid>            
             </Grid> */}
 
+        <Grid item sx={{ paddingTop: 5 }}>
+            <Typography variant="h7" color="black" align='center' sx={{ fontFamily: 'Helvetica', paddingLeft: 4 }}>
+				Household Disaster Information Table
+			</Typography>
+
+            <Grid item>
+                <Grid container direction='row' sx={{ paddingTop: 2 }}>
+                    <div style={{ width: "23px" }} />
+                    <FormControl sx={{ m: 1, width: 400 }}>
+                        <InputLabel id="demo-simple-select-label">Durability of House</InputLabel>
+                            <Select
+                                name="durabilityOfHouse"
+                                value={formValues.durabilityOfHouse}
+                                onChange={handleInputChange}
+                                input={<OutlinedInput label="Durability of House" />}
+                                >
+                                <MenuItem value="1">Concrete</MenuItem>
+                                <MenuItem value="2">Semi-Concrete</MenuItem>
+                                <MenuItem value="3">Light Materials</MenuItem>
+                                <MenuItem value="2">Shanty</MenuItem>
+                                <MenuItem value="3">Salvage Materials</MenuItem>
+                            </Select>
+                        </FormControl>
+
+                    <Grid sx={{ width: 13, height: 20 }}/>
+                </Grid>            
+            </Grid>
+        </Grid>
+
             <Grid container direction='row' justifyContent='flex-end' sx={{ paddingTop:5 }}>
                 <Button variant="contained" type="submit" style={{ backgroundColor: 'primary' }}>
                     Submit
@@ -500,6 +413,6 @@ const HouseholdForm = () => {
   )
 }
 
-export default HouseholdForm
+export default FinancialInfo
 
 

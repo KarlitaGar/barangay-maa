@@ -57,7 +57,56 @@ const ResidentForm = () => {
 
         <form onSubmit={handleSubmit}>
            
-            
+            <Grid item>
+                <Grid container direction='row' sx={{ paddingTop: 2 }}>
+                <div style={{ width: "30px" }} />
+                    <TextField
+                        id="name-input"
+                        name="lname"
+                        label="Last Name"
+                        type="text"
+                        sx={{ width: 400 }}
+                        value={formValues.name}
+                        onChange={handleInputChange}
+                    />
+                    <Grid sx={{ width: 30, height: 20 }}/>
+                    <TextField
+                        id="name-input"
+                        name="fname"
+                        label="First Name"
+                        type="text"
+                        sx={{ width: 400 }}
+                        value={formValues.name}
+                        onChange={handleInputChange}
+                    />
+                </Grid>
+            </Grid>
+
+            <Grid item>
+                <Grid container direction='row' sx={{ paddingTop: 2 }}>
+                <div style={{ width: "30px" }} />
+                    <TextField
+                        id="name-input"
+                        name="mname"
+                        label="Middle Name"
+                        type="text"
+                        sx={{ width: 400 }}
+                        value={formValues.name}
+                        onChange={handleInputChange}
+                    />
+                    <Grid sx={{ width: 30, height: 20 }}/>
+                    <TextField
+                        id="name-input"
+                        name="ename"
+                        label="Extended Name"
+                        type="text"
+                        sx={{ width: 400 }}
+                        value={formValues.name}
+                        onChange={handleInputChange}
+                    />
+                </Grid>
+            </Grid>
+
                 <Grid item>
                     <Grid container direction='row' sx={{ paddingTop: 2 }}>
                     <div style={{ width: "30px" }} />

@@ -1,4 +1,6 @@
+
 import * as React from 'react';
+import { useState } from 'react';
 import List from '@mui/material/List';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
@@ -11,41 +13,55 @@ import ExpandMore from '@mui/icons-material/ExpandMore';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import ArticleIcon from '@mui/icons-material/Article';
 import AssessmentIcon from '@mui/icons-material/Assessment';
-import { Link, navigate } from '@mui/material';
+import { Link, navigate} from '@mui/material';
 
-import HouseholdForm from '../forms/HouseholdForm';
-import ResidentForm from '../forms/ResidentForm';
+import ResidentForm from "../../pages/forms/ResidentForm";
+import HouseholdForm from "../../pages/forms/HouseholdForm";
 
 const MenuList = (activePage) => {
 
-  // const pages = [
-  //   {
-  //     id: 1,
-  //     pageName: 'ResidentForm',
-  //     location: '../forms/ResidentForm',
-  //     activeColor: activePage === 1 ? true : false
-  //   },
-  //   {
-  //     id: 2,
-  //     pageName: 'HouseholdForm',
-  //     location: '../forms/HouseholdForm',
-  //     activeColor: activePage === 2 ? true : false
-  //   },
+  const pages = [
+    {
+      id: 1,
+      pageName: 'ResidentForm',
+      location: '/ResidentForm',
+      activeColor: activePage === 1 ? true : false
+    },
+    {
+      id: 2,
+      pageName: 'HouseholdForm',
+      location: '/HouseholdForm',
+      activeColor: activePage === 2 ? true : false
+    },
 
-  // ];
+  ];
 
   const [open, setOpen] = React.useState(true);
 
   const handleClick = () => {
     setOpen(!open);
   };
+
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const [selectedIndex, setSelectedIndex] = useState(0);
+
+  const handleClickListItem = event => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleListItemClick = (event, index) => {
+        setSelectedIndex(index);
+        setAnchorEl(null);
+    };
+
+
   return (
-    <List
+    <List 
         sx={{ width: '250px', height: 600 , bgcolor: '#f5f5f5'}}
-        component="nav"
-        aria-labelledby="nested-list-subheader" 
+        component="nav" 
     >
-    <ListItemButton component={Link} to="../forms/ResidentForm">
+
+    <ListItemButton component={Link} to="HouseholdForm">
       <ListItemIcon>
         <DashboardIcon sx={{ color: '#800000' }}/>
       </ListItemIcon>
@@ -62,10 +78,10 @@ const MenuList = (activePage) => {
 
     <Collapse in={open} timeout="auto" unmountOnExit>
       <List component="div" disablePadding>
-        <ListItemButton onClick={handleClick} sx={{ pl: 4, paddingLeft: 15 }}>
+        <ListItemButton onClick={handleListItemClick} sx={{ pl: 4, paddingLeft: 15 }}>
           <ListItemText primary="Resident" />
         </ListItemButton>
-        <ListItemButton onClick={handleClick} component={Link} href="../forms/ResidentForm" sx={{ pl: 4, paddingLeft: 15 }}>
+        <ListItemButton onClick={handleListItemClick} component={Link} href="../forms/ResidentForm" sx={{ pl: 4, paddingLeft: 15 }}>
           <ListItemText primary="Household" />
         </ListItemButton>
         <ListItemButton sx={{ pl: 4, paddingLeft: 15 }}>
@@ -78,24 +94,25 @@ const MenuList = (activePage) => {
     </Collapse>
 
     
-      
-      {/* <ListItemButton key={id} onclick={()=>{navigate(location)}}
+      {/* {pages.map(({id,pageName,activeColor, location}) => (
+        <ListItemButton key={id} onclick={()=>{navigate(location)}}
         >
-        {pageName}
           <ListItemIcon>
             <DraftsIcon />
           </ListItemIcon>
           <ListItemText primary="Records" />
-        </ListItemButton> */}
+        </ListItemButton>
 
-    <ListItemButton>
+      ))} */}
+      
+    <ListItemButton selected={selectedIndex === 0} onClick={(event) => handleListItemClick(event, 0)}>
       <ListItemIcon>
         <AssessmentIcon sx={{ color: '#800000' }}/>
       </ListItemIcon>
       <ListItemText primary="Reports" />
     </ListItemButton>
 
-    <ListItemButton component={Link} to="/404">
+    <ListItemButton selected={selectedIndex === 1} onClick={(event) => handleListItemClick(event, 1)}>
       <ListItemIcon>
         <DraftsIcon />
       </ListItemIcon>
